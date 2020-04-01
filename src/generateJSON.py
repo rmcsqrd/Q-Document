@@ -40,20 +40,19 @@ def GenerateRFP():
         with open(f'data/RFP{cnt+1}.json', 'w') as outfile:
             json.dump(doc, outfile)
 
-def GenerateTruth():
-    truth = {'Product':[{'Service': 'We are good at making stuff',
-                         'Description': 'We will make you stuff',
-                         'Price': 100}],
+def GenerateResponses():
+    responses = {1: 'Let us engineer stuff for you',
+                 2: 'we have engineered XYZ',
+                 3: 'engineering services cost an arm',
+                 4: 'let us sell stuff for you',
+                 5: 'we have sold XYZ',
+                 6: 'selling your stuff will cost you a leg',
+                 7: 'let us develop this product for you',
+                 8: 'we have developed product XYZ',
+                 9: 'product development costs an arm and a leg'}
 
-            'Engineering':[{'Service': 'We are engineers',
-                             'Description': 'We will engineer your stuff',
-                             'Price': 1000}],
+    return responses
 
-            'Sales':[{'Service': 'We are great at selling stuff',
-                      'Description': 'We will sell your stuff',
-                      'Price': 4000}]
-             }
 
-    with open('data/truth.json', 'w') as outfile:
-        json.dump(truth, outfile)
+
 
