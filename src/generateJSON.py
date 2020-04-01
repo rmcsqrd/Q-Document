@@ -1,48 +1,59 @@
 ## imports
 import json
-import sys
 
-def GenerateJSON():
+def GenerateRFP():
     '''
-    Quick utility function to generate the JSON files in the root folder.
-    :return: writes JSON files to root folder
+    Quick utility function to generate the RFP JSON files in the root folder.
+    :return: writes RFP JSON files to root folder
     '''
 
     # create dummy data
     doc1 = {'client': 'Super Best Friends Inc',
-            'content':[{'Request Type': 'Product Request',
+            'content':{'Type': 'Product',
             'Requests':
-                ['Product Type',
-                 'References',
+                ['Service',
+                 'Description',
                  'Price']
-                        }]
+                        }
             }
     doc2 = {'client': 'Mr Hankey\'s Christmas Emporium',
-            'content':[{'Request Type': 'Engineering Request',
+            'content':{'Type': 'Engineering',
             'Requests':
-                ['Services Type',
-                 'References',
+                ['Service',
+                 'Description',
                  'Price']
-                        }]
+                        }
             }
     doc3 = {'client': 'Shakey\'s Pizza',
-            'content':[{'Request Type': 'Sales Request',
+            'content':{'Type': 'Sales',
             'Requests':
-                ['Services Type',
-                 'References',
+                ['Service',
+                 'Description',
                  'Price']
-                        }]
+                        }
             }
 
     # generate json documents and write to file
     docs = [doc1, doc2, doc3]
-    docName = ['doc1', 'doc2', 'doc3']
 
     for cnt, doc in enumerate(docs):
-        with open(f'../data/{docName[cnt]}data.json', 'w') as outfile:
+        with open(f'data/RFP{cnt+1}.json', 'w') as outfile:
             json.dump(doc, outfile)
 
-# uncomment and run if you want to generate new data
-# GenerateJSON()
+def GenerateTruth():
+    truth = {'Product':[{'Service': 'We are good at making stuff',
+                         'Description': 'We will make you stuff',
+                         'Price': 100}],
 
+            'Engineering':[{'Service': 'We are engineers',
+                             'Description': 'We will engineer your stuff',
+                             'Price': 1000}],
+
+            'Sales':[{'Service': 'We are great at selling stuff',
+                      'Description': 'We will sell your stuff',
+                      'Price': 4000}]
+             }
+
+    with open('data/truth.json', 'w') as outfile:
+        json.dump(truth, outfile)
 
