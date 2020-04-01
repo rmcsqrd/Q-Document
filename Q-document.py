@@ -9,18 +9,16 @@ import Qbrain
 
 if __name__ == '__main__':
 
-    # TODO: uncomment this unless you're debugging
-    # # make sure user is inputting number of training epochs
-    # try:
-    #     num_epochs = int(sys.argv[1])
-    # except:
-    #     print('\n\n\nEnter number of training epochs\n\n\n')
-    #     raise UserWarning
+    # make sure user is inputting number of training epochs
+    try:
+        num_epochs = int(sys.argv[1])
+    except:
+        print('\n\n\nEnter number of training epochs\n\n\n')
+        raise UserWarning
 
 
     # Generate JSON data - edit the src/generateJSON.py for different data
     generateJSON.GenerateRFP()
-    responses = generateJSON.GenerateResponses()
 
     # Load JSON data
     json_data = {}
@@ -29,8 +27,12 @@ if __name__ == '__main__':
             with open('data/'+file) as json_file:
                 json_data[cnt] = json.load(json_file)
 
+
+    # instantiate organization specific object to handle Q matrix
+    OrgQBrain = Qbrain.Qtable(json_data, generateJSON.GenerateResponses())
+
+    # train model using user input as reward function
     epoch = 0
-    num_epochs = 2
     while(epoch < num_epochs):
         epoch += 1
 
@@ -40,22 +42,24 @@ if __name__ == '__main__':
             json = json_data[key]
             print(f'{key}) ',json['client'])
         RFP_select = input('Select RFP by selecting number: ')
+        print('\n\n')
 
         # loop through RFP requirements
-        print('\n\n')
         selected_JSON = json_data[int(RFP_select)]
         service_type = selected_JSON['content']['Type']
         for request in selected_JSON['content']['Requests']:
             print(f'Select response to RFP item {service_type} {request}')
 
-            for key in responses.keys():
-                print(f'{key})', responses[key])
+            # generate acceptable responses from trained Q matrix
+            state = [service_type, request]
+            responses = OrgQBrain.ReturnResponses(state)
+            for response in responses:
+                print(f'{response[0]})', response[1])
 
+            # update Q matrix based on user input
             response_select = input('Select response by selecting number: ')
+            OrgQBrain.UpdateResponses(state, int(response_select))
             print('\n\n')
 
-            #TODO:
-            # 1) write a class that handles the Q table
-            # 2) have some sort of thing that culls Q(s,a) positions if they fall below a certain reward threshold
-            #   a) rewards should be like +1 if selected, -0.5 for all others not selected. Use threshold reward as tuning knob
+
 

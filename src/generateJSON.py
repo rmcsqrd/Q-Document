@@ -41,6 +41,8 @@ def GenerateRFP():
             json.dump(doc, outfile)
 
 def GenerateResponses():
+
+    # generate dummy responses based on model trained by previous client RFPs
     responses = {1: 'Let us engineer stuff for you',
                  2: 'we have engineered XYZ',
                  3: 'engineering services cost an arm',
