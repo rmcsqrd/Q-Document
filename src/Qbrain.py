@@ -62,7 +62,7 @@ class Qtable():
 
         # return indices of responses that are within threshold percentage of response with max expected reward
         responseList = self.qmatrix[:, j, i]
-        responseThreshold = np.where(responseList >= percent_threshold*np.max(responseList))[1]
+        responseThreshold = np.where(responseList >= percent_threshold*np.max(responseList))[0]
 
         return [(k,v) for k,v in self.assocResponseDict.items() if k in responseThreshold]
 
@@ -77,7 +77,7 @@ class Qtable():
         j, i = self.GetState(state)
         # add reward to selected action, subtract reward from not selected actions
         selectReward = 1
-        nonselectPenalty = -0.5
+        nonselectPenalty = -0.0
 
         self.qmatrix[:, j, i] += nonselectPenalty
         self.qmatrix[selectID, j, i] += (selectReward + -1*nonselectPenalty)
