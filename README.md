@@ -56,7 +56,7 @@ that selected action (and associated actions).
 At the core of Q-learning is a matrix `Q(s,a)` which is an n-dimensional matrix that stores all possible state/action pairings.
 The typical Q-learning algorithm is (from Reinforcement Learning, 2nd ed, Sutton and Barto):
 
-![alt text](https://github.com/rmcsqrd/Q-Document/tree/master/aux/qlearn.png "Q Learn Algorithm")
+![alt text](https://github.com/rmcsqrd/Q-Document/aux/qlearn.png "Q Learn Algorithm")
 
 
 
