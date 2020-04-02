@@ -58,13 +58,32 @@ The typical Q-learning algorithm is (from Reinforcement Learning, 2nd ed, Sutton
 
 ![alt text](https://github.com/rmcsqrd/Q-Document/raw/master/aux/qlearn.png "Q Learn Algorithm")
 
+For this implementation of Q-document, I basically reduced the `Q(s,a)` update step down to just looking for the recommendation
+with the maximum recorded reward. I did not feel that it was prudent to include a lookahead/discount factor given
+that the state transitions are in a vaccum - eg the action space for the 'service' request category does
+not necessarily impact the action space/reward for the 'price' category in this prototype formulation.
 
+As such, I formulated the underlying MDP as 
+* __State Space__: (RFP type, request type)
+* __Action Space__: ([all possible recommendations sans expert knowledge])
+* __Transition Dynamics__: Deterministic/arbitrary (we assume that the order of filling out the RFP is not important)
+* __Gamma__: Arbitrary (this proof of concept assumes actions for some state don't impact the actions of another)
+* __Reward__: User selection = large reward, related selections = small reward, unrelated/not selected = negative reward.
 
+The `Q(s,a)` matrix can be visualized as:
+![alt text](https://github.com/rmcsqrd/Q-Document/raw/master/aux/qmat.png "Q Matrix")
+
+#### Limitations for Q-learning in this application
+relies heavily on 
 
 
 ## Future Expansions<a name="Future"></a>
 The modified Future expansions that I'd like to explore are:
 
+ * __Cross State Implications__: I think it would be worth exploring what happens if a user takes an action in one state and
+ how that might impact that same action choice in another state. For example, if a user chooses a certain
+ overall price in one RFP request category, an optimal policy would know to use a smaller price for a sub-category. This relies
+ heavily on the discretization of the state space and lots of training data. 
  * __Response Dictionary__: I think it would be prudent to use some sort of neural network to generate and characterize
  the response dictionary based on previous RFP's.
  * __Reward Function__: I would like to explore using some sort of neural network to update the reward function.
