@@ -84,7 +84,6 @@ class Qtable():
         nonselectPenalty = -0.1
 
         # loop through actions for given Q(s, :)
-        duck = self.qmatrix[:, j, i]
         for k in np.arange(0, self.qmatrix[:, j, i].shape[0]):
             # add reward to selected action
             if k == selectID:
