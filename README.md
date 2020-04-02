@@ -1,12 +1,3 @@
-matt notes:
-have more interactive prompts to explain what is going on (more text in actual program)
-move example code up to top, below TL;DR
-make RFP type/requiest type POP more
-define RFP/request type
-maybe have some sort of "intro thing" in program
-figure out which characters you send to the console to wipe everything
-
-
 #### TL;DR
 
 Q-document is an interactive simulation for filling out Request for Proposals (RFP).  
@@ -131,153 +122,190 @@ Start the simulation and run for 3 simulations
     $ python3 Q-document.py 3
     
     
-Follow the prompt and fill out the RFP for Shakey's Pizza
+Follow the prompt and fill out the RFP for Mr Hankey's Christmas Emporium
   
     
-         Available RFPs to fill out
+    Available RFPs to fill out
+    
     0)  Super Best Friends Inc
     1)  Shakey's Pizza
     2)  Mr Hankey's Christmas Emporium
-    Select RFP by selecting number: 1
+    
+    Select RFP by selecting number: 2
       
 
-RFP type is "Sales" and the request type is "Services". We select option 3 accordingly.
+RFP type is "Engineering" and the request type is "Services". We select option 3 accordingly.
 
 There are currently lots of response recommendations because we have not initialized Q-document with any 
 expert knowledge. Without expert knowledge, it trains based purely to user input.  
  
     
-        Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Service
-    0) Let us engineer stuff for you
-    1) we have engineered XYZ
-    2) engineering services cost an arm
-    3) let us sell stuff for you
-    4) we have sold XYZ
-    5) selling your stuff will cost you a leg
-    6) let us develop this product for you
-    7) we have developed product XYZ
-    8) product development costs an arm and a leg
-    Select response by selecting number: 3
+        Engineering RFP: Mr Hankey's Christmas Emporium
+        
+        RFP Type: Engineering
+        RFP Field (Request Type): Service
+        
+        Q-document response recommendations:
+        0) Our provided SERVICE is ENGINEERING
+        1) Our DESCRIPTION of service is that we are good ENGINEERS
+        2) The PRICE of our ENGINEERING services is an arm
+        3) Our provided SERVICE is SALES
+        4) Our DESCRIPTION of service is that we have SOLD XYZ
+        5) The PRICE of SELLING your stuff will cost you a leg
+        6) Our provided SERVICE is to develop this PRODUCT for you
+        7) Our DESCRIPTION of service is that we have developed PRODUCT XYZ
+        8) The PRICE of PRODUCT development costs your first born
+        
+        Select response by selecting number: 0
     
     
-The RFP wants a description of sales services so we select option 4
+The RFP wants a description of engineering services so we select option 1
+    
+        Engineering RFP: Mr Hankey's Christmas Emporium
+        
+        RFP Type: Engineering
+        RFP Field (Request Type): Description
+        
+        Q-document response recommendations:
+        0) Our provided SERVICE is ENGINEERING
+        1) Our DESCRIPTION of service is that we are good ENGINEERS
+        2) The PRICE of our ENGINEERING services is an arm
+        3) Our provided SERVICE is SALES
+        4) Our DESCRIPTION of service is that we have SOLD XYZ
+        5) The PRICE of SELLING your stuff will cost you a leg
+        6) Our provided SERVICE is to develop this PRODUCT for you
+        7) Our DESCRIPTION of service is that we have developed PRODUCT XYZ
+        8) The PRICE of PRODUCT development costs your first born
+        
+        Select response by selecting number: 1
     
     
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Description
-    0) Let us engineer stuff for you
-    1) we have engineered XYZ
-    2) engineering services cost an arm
-    3) let us sell stuff for you
-    4) we have sold XYZ
-    5) selling your stuff will cost you a leg
-    6) let us develop this product for you
-    7) we have developed product XYZ
-    8) product development costs an arm and a leg
-    Select response by selecting number: 4
-    
-    
-Finally, the RFP wants a price so we select option 5
+Finally, the RFP wants a price so we select option 2
 
-    
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Price
-    0) Let us engineer stuff for you
-    1) we have engineered XYZ
-    2) engineering services cost an arm
-    3) let us sell stuff for you
-    4) we have sold XYZ
-    5) selling your stuff will cost you a leg
-    6) let us develop this product for you
-    7) we have developed product XYZ
-    8) product development costs an arm and a leg
-    Select response by selecting number: 5
-    
-    
+        Engineering RFP: Mr Hankey's Christmas Emporium
+        
+        RFP Type: Engineering
+        RFP Field (Request Type): Price
+        
+        Q-document response recommendations:
+        0) Our provided SERVICE is ENGINEERING
+        1) Our DESCRIPTION of service is that we are good ENGINEERS
+        2) The PRICE of our ENGINEERING services is an arm
+        3) Our provided SERVICE is SALES
+        4) Our DESCRIPTION of service is that we have SOLD XYZ
+        5) The PRICE of SELLING your stuff will cost you a leg
+        6) Our provided SERVICE is to develop this PRODUCT for you
+        7) Our DESCRIPTION of service is that we have developed PRODUCT XYZ
+        8) The PRICE of PRODUCT development costs your first born
+        
+        Select response by selecting number: 2
+
 At this point we begin another training epoch. We want to keep training within the sales state
-space so again we decide to request to build another Shakey's Pizza.
+space so again we decide to fill out another RFP for Mr. Hankey.
 
+        Available RFPs to fill out
+        
+        0)  Super Best Friends Inc
+        1)  Shakey's Pizza
+        2)  Mr Hankey's Christmas Emporium
+        
+        Select RFP by selecting number: 2
     
-     Available RFPs to fill out
-    0)  Super Best Friends Inc
-    1)  Shakey's Pizza
-    2)  Mr Hankey's Christmas Emporium
-    Select RFP by selecting number: 1
-    
-    
-This time we note that Q-document has learned from our previous inputs. We again select option 3 and note:  
+This time we note that Q-document has learned from our previous inputs. We again select option 0 and note:  
 
-1. Last time around, the user selected option 3 so this is the current best recommendation.
-2. Options 4 and 5 are related to sales RFP's (this comes from the response data set) and thus are potentially
+1. Last time around, the user selected option 0 so this is the current best recommendation.
+2. Options 1 and 2 are related to sales RFP's (this comes from the response data set) and thus are potentially
 acceptable recommendations as well. 
 
 
-    
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Service
-    3) let us sell stuff for you
-    4) we have sold XYZ
-    5) selling your stuff will cost you a leg
-    Select response by selecting number: 3
-    
+        Engineering RFP: Mr Hankey's Christmas Emporium
+        
+        RFP Type: Engineering
+        RFP Field (Request Type): Service
+        
+        Q-document response recommendations:
+        0) Our provided SERVICE is ENGINEERING
+        1) Our DESCRIPTION of service is that we are good ENGINEERS
+        2) The PRICE of our ENGINEERING services is an arm
+        
+        Select response by selecting number: 0
 
 We notice similar phenomena for the description and price portions of the RFP. We input similar responses to last time.
     
-    
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Description
-    3) let us sell stuff for you
-    4) we have sold XYZ
-    5) selling your stuff will cost you a leg
-    Select response by selecting number: 4
-    
-    
-    
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Price
-    3) let us sell stuff for you
-    4) we have sold XYZ
-    5) selling your stuff will cost you a leg
-    Select response by selecting number: 5
+        Engineering RFP: Mr Hankey's Christmas Emporium
+        
+        RFP Type: Engineering
+        RFP Field (Request Type): Description
+        
+        Q-document response recommendations:
+        0) Our provided SERVICE is ENGINEERING
+        1) Our DESCRIPTION of service is that we are good ENGINEERS
+        2) The PRICE of our ENGINEERING services is an arm
+        
+        Select response by selecting number: 1
+        
+        _____
+        
+        Engineering RFP: Mr Hankey's Christmas Emporium
+
+        RFP Type: Engineering
+        RFP Field (Request Type): Price
+        
+        Q-document response recommendations:
+        0) Our provided SERVICE is ENGINEERING
+        1) Our DESCRIPTION of service is that we are good ENGINEERS
+        2) The PRICE of our ENGINEERING services is an arm
+        
+        Select response by selecting number: 2
     
     
 For our third and final training epoch, we note that Q-document has been trained enough that it knows a single, correct
 response for each RFP type/request pair:
     
     
-     Available RFPs to fill out
-    0)  Super Best Friends Inc
-    1)  Shakey's Pizza
-    2)  Mr Hankey's Christmas Emporium
-    Select RFP by selecting number: 1
-    
-    
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Service
-    3) let us sell stuff for you
-    Select response by selecting number: 3
-    
-    
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Description
-    4) we have sold XYZ
-    Select response by selecting number: 4
-    
-    
-    Select response to RFP item 
-    RFP Type: Sales
-    Request Type: Price
-    5) selling your stuff will cost you a leg
-    Select response by selecting number: 5
+        Available Client RFPs to fill out
+        
+        0)  Product RFP: Super Best Friends Inc
+        1)  Sales RFP: Shakey's Pizza
+        2)  Engineering RFP: Mr Hankey's Christmas Emporium
+        
+        Select RFP by selecting number: 2
+        
+        _____
+        
+        Engineering RFP: Mr Hankey's Christmas Emporium
+
+        RFP Type: Engineering
+        RFP Field (Request Type): Service
+        
+        Q-document response recommendations:
+        0) Our provided SERVICE is ENGINEERING
+        
+        Select response by selecting number: 0
+        
+        _____
+        
+        Engineering RFP: Mr Hankey's Christmas Emporium
+
+        RFP Type: Engineering
+        RFP Field (Request Type): Description
+        
+        Q-document response recommendations:
+        1) Our DESCRIPTION of service is that we are good ENGINEERS
+        
+        Select response by selecting number: 1
+        
+        _____
+        
+        Engineering RFP: Mr Hankey's Christmas Emporium
+
+        RFP Type: Engineering
+        RFP Field (Request Type): Price
+        
+        Q-document response recommendations:
+        2) The PRICE of our ENGINEERING services is an arm
+        
+        Select response by selecting number: 2
 
 If we were to run a fourth training epoch but instead chose a different RFP, we would notice that
 all responses are suggested. This is because Q-document has not received enough user input to threshold
