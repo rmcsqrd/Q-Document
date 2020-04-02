@@ -43,15 +43,15 @@ def GenerateRFP():
 def GenerateResponses():
 
     # generate dummy responses based on model trained by previous client RFPs
-    responses = {1: 'Let us engineer stuff for you',
-                 2: 'we have engineered XYZ',
-                 3: 'engineering services cost an arm',
-                 4: 'let us sell stuff for you',
-                 5: 'we have sold XYZ',
-                 6: 'selling your stuff will cost you a leg',
-                 7: 'let us develop this product for you',
-                 8: 'we have developed product XYZ',
-                 9: 'product development costs an arm and a leg'}
+    responses = {1: ['Let us engineer stuff for you','engineering'],
+                 2: ['we have engineered XYZ','engineering'],
+                 3: ['engineering services cost an arm','engineering'],
+                 4: ['let us sell stuff for you','sales'],
+                 5: ['we have sold XYZ','sales'],
+                 6: ['selling your stuff will cost you a leg','sales'],
+                 7: ['let us develop this product for you','sales'],
+                 8: ['we have developed product XYZ','product'],
+                 9: ['product development costs your first born','product']}
 
     return responses
 

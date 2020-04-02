@@ -56,7 +56,7 @@ class Qtable():
         :param state: list (RFP Type, Request Type) --> future versions will be extensible to n-dimensional state spaces
         :return: list of acceptable responses and response IDs
         '''
-        percent_threshold = 0.5  # percent of max
+        percent_threshold = 0.4  # percent of max
 
         j, i = self.GetState(state)
 
@@ -64,7 +64,7 @@ class Qtable():
         responseList = self.qmatrix[:, j, i]
         responseThreshold = np.where(responseList >= percent_threshold*np.max(responseList))[0]
 
-        return [(k,v) for k,v in self.assocResponseDict.items() if k in responseThreshold]
+        return [(k,v[0]) for k,v in self.assocResponseDict.items() if k in responseThreshold]
 
     def UpdateResponses(self, state, selectID):
         '''
@@ -75,12 +75,27 @@ class Qtable():
         '''
 
         j, i = self.GetState(state)
-        # add reward to selected action, subtract reward from not selected actions
-        selectReward = 1
-        nonselectPenalty = -0.0
+        # add reward to selected action and associated actions, subtract reward from not selected actions
+        # generate scale factor based on number of values with positive reward
 
-        self.qmatrix[:, j, i] += nonselectPenalty
-        self.qmatrix[selectID, j, i] += (selectReward + -1*nonselectPenalty)
+
+        selectReward = 2*np.max(self.qmatrix[:,j,i])+1 # this is fudged a bit for proof of concept, future version obviously need to refine this
+        groupReward = 0.5
+        nonselectPenalty = -0.1
+
+        # loop through actions for given Q(s, :)
+        for k in np.arange(0, self.qmatrix[:, j, i].shape[0]):
+            # add reward to selected action
+            if k == selectID:
+                self.qmatrix[k, j, i] += selectReward
+
+            # add reward to associated actions
+            elif self.assocResponseDict[selectID][1] == self.assocResponseDict[k][1]:
+                self.qmatrix[k, j, i] += groupReward
+
+            # subtract reward from non-selected, non-associated actions
+            else:
+                self.qmatrix[k, j, i] += nonselectPenalty
 
 
     def GetState(self, state):

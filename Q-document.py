@@ -10,11 +10,11 @@ import Qbrain
 if __name__ == '__main__':
 
     # make sure user is inputting number of training epochs
-    # try:
-    #     num_epochs = int(sys.argv[1])
-    # except:
-    #     print('\n\n\nEnter number of training epochs\n\n\n')
-    #     raise UserWarning
+    try:
+        num_epochs = int(sys.argv[1])
+    except:
+        print('\n\n\nEnter number of training epochs\n\n\n')
+        raise UserWarning
 
 
     # Generate JSON data - edit the src/generateJSON.py for different data
@@ -33,7 +33,6 @@ if __name__ == '__main__':
 
     # train model using user input as reward function
     epoch = 0
-    num_epochs = 2
     while(epoch < num_epochs):
         epoch += 1
 
@@ -49,7 +48,9 @@ if __name__ == '__main__':
         selected_JSON = json_data[int(RFP_select)]
         service_type = selected_JSON['content']['Type']
         for request in selected_JSON['content']['Requests']:
-            print(f'Select response to RFP item {service_type} {request}')
+            print(f'Select response to RFP item \n'
+                  f'RFP Type: {service_type}\n'
+                  f'Request Type: {request}')
 
             # generate acceptable responses from trained Q matrix
             state = [service_type, request]
