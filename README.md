@@ -1,4 +1,3 @@
-# Q-Document
 #### TL;DR
 
 This is a small, interactive program that puts you in the shoes of a user filling out RFP's for different clients.  
@@ -8,11 +7,12 @@ each RFP (eg services offered, price, etc).
 
 The program, Q-document, attempts to recommend the best response for the RFP request based on your previous response selections.
 
-The user can navigate the program using the arrow keys. See [Setup/Usage](#Setup) for how to run. Also see [Guided Example](#Example)
+The user can navigate the program using the number keys. See [Setup/Usage](#Setup) for how to run. Also see [Guided Example](#Example)
 for pre-run inputs/outputs with a description of what is going on. 
 
 
 ___
+# Q-Document
 Q-document is a proof of concept implementation of Q-learning within a mock request for proposal (RFP) task. As users
 fill out an RFP, Q-document categorizes and tracks user input to provide better response recommendations.
 
