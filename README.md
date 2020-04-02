@@ -71,7 +71,7 @@ As such, I formulated the underlying MDP as
 * __Reward__: User selection = large reward, related selections = small reward, unrelated/not selected = negative reward.
 
 The `Q(s,a)` matrix can be visualized as:
-![alt text](https://github.com/rmcsqrd/Q-Document/raw/master/aux/qmat.png "Q Matrix")
+![alt text](https://github.com/rmcsqrd/Q-Document/raw/master/aux/Qmat.png "Q Matrix")
 
 #### Limitations for Q-learning in this application
 relies heavily on 
