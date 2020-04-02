@@ -1,6 +1,7 @@
 ## imports
 import json
 
+
 def GenerateRFP():
     '''
     Quick utility function to generate the RFP JSON files in the root folder.
@@ -8,7 +9,7 @@ def GenerateRFP():
     '''
 
     # create dummy data
-    doc1 = {'client': 'Super Best Friends Inc',
+    doc1 = {'client': 'Product RFP: Super Best Friends Inc',
             'content':{'Type': 'Product',
             'Requests':
                 ['Service',
@@ -16,7 +17,7 @@ def GenerateRFP():
                  'Price']
                         }
             }
-    doc2 = {'client': 'Mr Hankey\'s Christmas Emporium',
+    doc2 = {'client': 'Engineering RFP: Mr Hankey\'s Christmas Emporium',
             'content':{'Type': 'Engineering',
             'Requests':
                 ['Service',
@@ -24,7 +25,7 @@ def GenerateRFP():
                  'Price']
                         }
             }
-    doc3 = {'client': 'Shakey\'s Pizza',
+    doc3 = {'client': 'Sales RFP: Shakey\'s Pizza',
             'content':{'Type': 'Sales',
             'Requests':
                 ['Service',
@@ -43,15 +44,15 @@ def GenerateRFP():
 def GenerateResponses():
 
     # generate dummy responses based on model trained by previous client RFPs
-    responses = {1: ['Let us engineer stuff for you','engineering'],
-                 2: ['we have engineered XYZ','engineering'],
-                 3: ['engineering services cost an arm','engineering'],
-                 4: ['let us sell stuff for you','sales'],
-                 5: ['we have sold XYZ','sales'],
-                 6: ['selling your stuff will cost you a leg','sales'],
-                 7: ['let us develop this product for you','sales'],
-                 8: ['we have developed product XYZ','product'],
-                 9: ['product development costs your first born','product']}
+    responses = {1: ['Our provided SERVICE is ENGINEERING','engineering'],
+                 2: ['Our DESCRIPTION of service is that we are good ENGINEERS','engineering'],
+                 3: ['The PRICE of our ENGINEERING services is an arm','engineering'],
+                 4: ['Our provided SERVICE is SALES','sales'],
+                 5: ['Our DESCRIPTION of service is that we have SOLD XYZ','sales'],
+                 6: ['The PRICE of SELLING your stuff will cost you a leg','sales'],
+                 7: ['Our provided SERVICE is to develop this PRODUCT for you','sales'],
+                 8: ['Our DESCRIPTION of service is that we have developed PRODUCT XYZ','product'],
+                 9: ['The PRICE of PRODUCT development costs your first born','product']}
 
     return responses
 

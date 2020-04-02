@@ -1,14 +1,23 @@
+matt notes:
+have more interactive prompts to explain what is going on (more text in actual program)
+move example code up to top, below TL;DR
+make RFP type/requiest type POP more
+define RFP/request type
+maybe have some sort of "intro thing" in program
+figure out which characters you send to the console to wipe everything
+
+
 #### TL;DR
 
-This is a small, interactive program that puts you in the shoes of a user filling out RFP's for different clients.  
+Q-document is an interactive simulation for filling out Request for Proposals (RFP).  
+You are a user at a company filling out RFP\'s for prospective clients.  
 
-There are different RFP types for different clients (eg engineering, sales, etc) with different requests within
-each RFP (eg services offered, price, etc). 
+Each client needs a different service (RFP Type).  
+Each RFP Type has different field you need to fill out (Request Type).  
+As you fill out the RFP fields, Q-document will recommend responses for you to choose.  
 
-The program, Q-document, attempts to recommend the best response for the RFP request based on your previous response selections.
-
-The user can navigate the program using the number keys. See [Setup/Usage](#Setup) for how to run. Also see [Guided Example](#Example)
-for pre-run inputs/outputs with a description of what is going on. 
+As you do this, Q-document will associate your responses with RFP Type/Request Type and give you better recommendations.  
+See the "Guided Example" in the README for a walkthrough with commentary.
 
 
 ___
@@ -24,21 +33,23 @@ fill out an RFP, Q-document categorizes and tracks user input to provide better 
 
 ## Setup/Usage<a name="Setup"></a>
 #### Dependencies
-Python version = 3.7.7  
+Python version = 3.7.7   
 See specific package requirements in `requirements.txt`  
 
 #### Usage
 1. Clone the repository  
     
         $ git clone https://github.com/rmcsqrd/Q-Document.git
+        
+2. Install Dependencies  
+
+        $ sudo pip3 install -r requirements.txt
       
-    
 2. Run the program for some number of training simulations  
     
         $ python3 /path/to/cloned/repository/Q-document.py [number of training simulations]
     
-      
-3. Provide user input as prompted.
+
 
 #### What is going on?<a name="TLDR"></a> 
 Q-document is a mock simulation of a user filling out RFP's. There are several different types of RFP's to choose from (engineering, sales, etc) and Q-document suggests 
