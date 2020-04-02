@@ -60,7 +60,7 @@ The typical Q-learning algorithm is (from Reinforcement Learning, 2nd ed, Sutton
 
 For this implementation of Q-document, I basically reduced the `Q(s,a)` update step down to just looking for the recommendation
 with the maximum recorded reward. I did not feel that it was prudent to include a lookahead/discount factor given
-that the state transitions are in a vaccum - eg the action space for the 'service' request category does
+that the state transitions are in a vacuum - eg the action space for the 'service' request category does
 not necessarily impact the action space/reward for the 'price' category in this prototype formulation.
 
 As such, I formulated the underlying MDP as 
@@ -73,8 +73,13 @@ As such, I formulated the underlying MDP as
 The `Q(s,a)` matrix can be visualized as:
 ![alt text](https://github.com/rmcsqrd/Q-Document/raw/master/aux/Qmat.png "Q Matrix")
 
-#### Limitations for Q-learning in this application
-relies heavily on 
+The big feature for Q-document is that is uses the user input as the reward function. When a user enters a new portion of
+the RFP filling task, Q-document makes a bunch of recommendations from the `Q(s,a)`. When the user selects one of its actions
+(or doesn't) it updates the expected reward at that `Q(s,a)` pair that will inform future recommendation decisions. 
+
+The main limitation with using a Q-learning approach is its heavy reliance on a uniform and discretized state space. This is inherently tricky with document parsing tasks.
+The JSON file structure that Q-document uses for generating its `Q(s,a)` matrix are highly standardized, whereas most communication
+between a client and a customer are not. Future explorations to resolve this issue are discussed in the "Future Expansions" section
 
 
 ## Future Expansions<a name="Future"></a>
